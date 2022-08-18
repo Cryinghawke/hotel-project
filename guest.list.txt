@@ -1,0 +1,6 @@
+surname,name,phone,email,passport
+Smith,John,555-0001-789,SJ@python.com,10
+Jones,Hook,555-0002-789,JH@python.com,001453318
+Apple,Bob,555-0003-789,AB@python.com,123456789
+Brown,Murry,555-0004-789,BM@python.com,624875391
+Campbell,Abe,555-0005-789,CA@python.com,147852369
