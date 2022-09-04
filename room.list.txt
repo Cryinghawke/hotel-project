@@ -1,6 +1,6 @@
 floor,number,category,bed,washroom,occupancy,status
-1,101,Standard,Double,Shower,Vacant,Clean
-1,102,Superior,Double,Bath tub,Vacant,Clean
-1,103,Superior,Twin,Bath tub,Vacant,Clean
-1,104,Superior,Twin,Shower,Vacant,Clean
-2,201,Standard,Double,Shower,Vacant,Clean
+1,101,standard,double,shower,vacant,clean
+1,102,superior,double,bath tub,vacant,clean
+1,103,superior,twin,bath tub,vacant,dirty
+1,104,superior,twin,shower,vacant,clean
+2,201,standard,double,shower,occupied,dirty

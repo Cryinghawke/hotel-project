@@ -5,7 +5,7 @@ class Room:
         self.category = category  # STD, STDT, SUP, SUPT
         self.bed = bed  # double or twin
         self.washroom = washroom  # bath or shower
-        self.occupied = occupied  # true or false
+        self.occupied = occupied  # vacant, occupied, reserved
         self.status = status  # meaning housekeeping status - clean, dirty, inspect
 
     def __str__(self):
@@ -17,28 +17,36 @@ class Room:
                f"occupancy : {self.occupied}, " \
                f"status : {self.status}"
 
+    def reservation(self):
+        self.occupied = input('Please room reservation status: '
+                              '"vacant", "occupied", "reserved"\n')
 
-class RoomList:
-    def __init__(self):
-        self.room_list_c = []
+    def housekeeping(self):
 
-    def room_list(self, room):
-        self.room_list_c.append(room)
+        self.status = input('Please enter room status: '
+                            '"clean", "dirty"\n')
 
-    def availability(self):
-        count = 0
-        room_numbers = []
-        for r in self.room_list_c:
-            if r.occupied:  # == True
-                count += 1
-                room_numbers.append(r.number)
-        if count == 0:
-            print('We are sorry but currently we are fully booked. we will be happy to see you next time')
-            return False
-        print('The rooms that are available are', room_numbers)
-        return True
+    def check_key(self):
+        if self.status == "clean" and self.occupied == "vacant":
+            self.occupied = 'reserved'
+            print('Room', self.number, 'is reserved for you. Have a nice day')
+        else:
+            print('an error has occurred, ask for help at the front desk')
+        return
 
-    def clean_room_rep(self, list):
-        for r in self.room_list_c:
-            if r.status == 'Clean':
-                print(r.number, ' | ', r.catergory, ' | ', r.bed, ' | ', r.washroom, ' | ')
+# this feature is not in use. it will be added with the next commit.
+# 5
+    def check_in(self):
+        if self.status == "clean" and self.occupied == "reserved":
+            self.occupied = 'occupied'
+            print('The guest is now checked in')
+        else:
+            print('The room you have selected is either dirty or not available. '
+                  '\nPlease select a another room')
+        return
+
+# 6
+    def check_out(self):
+        self.occupied = 'vacant'
+        self.status = 'dirty'
+        print('The guest is now checked out, Please send cleaning crew')
