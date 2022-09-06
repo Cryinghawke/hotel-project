@@ -1,3 +1,4 @@
+# good structure of this class
 class Room:
     def __init__(self, floor, number, category, bed, washroom, occupied, status,):
         self.floor = floor  # 1-4
@@ -22,10 +23,11 @@ class Room:
                               '"vacant", "occupied", "reserved"\n')
 
     def housekeeping(self):
-
+        # you are not checking what the user inputs. maybe it is better to check
         self.status = input('Please enter room status: '
                             '"clean", "dirty"\n')
-
+    # improve the name - get_key maybe?
+    # you double check clean and vacant - but that is ok.
     def check_key(self):
         if self.status == "clean" and self.occupied == "vacant":
             self.occupied = 'reserved'
@@ -34,11 +36,13 @@ class Room:
             print('an error has occurred, ask for help at the front desk')
         return
 
-# this feature is not in use. it will be added with the next commit.
+# this feature is not in use. it will be added with the next commit. 
 # 5
+# maybe you will want to see which guest is checking in - a refernece to guest class would be good here. maybe several guests per room?
+# you need to think this over for the next step (database)
     def check_in(self):
         if self.status == "clean" and self.occupied == "reserved":
-            self.occupied = 'occupied'
+            self.occupied = 'occupied' 
             print('The guest is now checked in')
         else:
             print('The room you have selected is either dirty or not available. '
@@ -46,6 +50,7 @@ class Room:
         return
 
 # 6
+
     def check_out(self):
         self.occupied = 'vacant'
         self.status = 'dirty'

@@ -14,6 +14,7 @@ class Guest:
                f"email : {self.email}, " \
                f"passport : {self.passport}"
 
+# as i said this is not so good. (see my comment in main_casa)
     def new_guest(self):
         print('Please enter your personal information')
         # make check for details
@@ -27,6 +28,7 @@ class Guest:
               '\n We hope you leave soon')
         return self.surname, self.name, self.phone, self.email, self.passport
 
+# this is ok
     def update_guest(self):
         print('Please update your details')
         self.surname = input('Please enter your surname \n')

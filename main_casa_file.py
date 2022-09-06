@@ -54,13 +54,18 @@ g_user = Guest(surname=guest[0],
 
 command = main_menu()
 
-
+# as i said in class this is deeply nested code and not a good idea
+# take a look here:
+# https://wpshout.com/unconditionally-refactoring-nested-statements-cleaner-code/
 while command == '1' or command == '2' or command == '3':
 
     if command == '1':  # new
-        surname, name, phone, email, guest_id = Guest.new_guest(g_user)
+        # this is hard to understand- the way you create a new guest. fix it. 
+        # create it in a function. not in the class and return an Guest object.
+        # then work with the object. what you do here is too complex
+        surname, name, phone, email, guest_id = Guest.new_guest(g_user) 
         guest_dict[guest_id] = g_user
-        # left for testing purposes ONLY do NOT use.
+        # left for testing purposes ONLY do NOT use. # dont leave code if you dont need it
         # for key in guest_dict:
         #     print(guest_dict[key])
         command = '2'
@@ -69,13 +74,11 @@ while command == '1' or command == '2' or command == '3':
         # "tries" to limit endless loops trying to enter the right data
         tries = 3
         while tries != 0:
-            passport = str(input('please enter your passport number to proceed'
-                                 '\n'))
+            passport = str(input('please enter your passport number to proceed\n'))
             if passport in guest_dict:
                 tries = 0
                 print('are your details correct? \n', guest_dict[passport])
-                answer = str(input('"yes"  "no"'
-                                   '\n'))
+                answer = str(input('"yes"  "no"\n'))
                 if answer == 'yes':
                     print('welcome back', guest_dict[passport].name, guest_dict[passport].surname)
                     action = input('Please select action :'
@@ -104,7 +107,7 @@ while command == '1' or command == '2' or command == '3':
                                                    '\nEnter room number: '
                                                    '\n')
                                     if number in room_dict.keys():
-                                        Room.check_key(room_dict[number])
+                                        Room.check_key(room_dict[number]) #better write room_dict[number].check_key()
                                         break
                                     print('choice is not valid, please choose again')
                     elif action == '2':
@@ -120,6 +123,8 @@ while command == '1' or command == '2' or command == '3':
                             print('choice is not valid, please choose again')
 
                 elif answer == 'no':
+                    # now i understand this is a way to update your details. 
+                    # maybe it should be in main menu (but improve the nesting first)
                     Guest.update_guest(guest_dict[passport])
                     print('Thank you. \nYour details have been updated')
                     break

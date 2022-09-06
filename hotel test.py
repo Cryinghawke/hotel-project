@@ -1,4 +1,5 @@
 # Program base code infrastructure.
+# is this a test file? if its not needed remove it.
 
 from rooms_c import Room
 from guest_c import Guest
